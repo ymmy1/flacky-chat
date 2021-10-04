@@ -1,6 +1,6 @@
 import './App.css';
 
-import { useState, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import firebase from 'firebase/compat/app'; //v9
 import 'firebase/compat/firestore'
 import 'firebase/compat/auth'
@@ -63,6 +63,9 @@ function ChatRoom() {
 
   const [formValue, setFormValue] = useState('')
 
+  useEffect(() => {
+    dummyScroll.current.scrollIntoView({ behavior: 'smooth' })
+  }, [messages]);
   const sendMessage = async (e) => {
 
     e.preventDefault();
