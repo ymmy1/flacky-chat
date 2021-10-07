@@ -1,0 +1,181 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #222222;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #ffffff;
+}
+
+.App {
+  height: 100vh;
+}
+
+.App .signIn-page {
+  background: #fcfcfc;
+  background-image: url("../img/big_bg/logIn.jpg");
+  background-position: top;
+  background-size: cover;
+  height: inherit;
+  position: relative;
+}
+
+.App .signIn-page_box {
+  position: absolute;
+  top: 45%;
+  right: 50%;
+  -webkit-animation-name: drop;
+          animation-name: drop;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-transform: translate(50%, -50%);
+          transform: translate(50%, -50%);
+  background: #292929;
+  width: 90%;
+  max-width: 500px;
+  color: #bb86fc;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.App .signIn-page_box .header,
+.App .signIn-page_box .body,
+.App .signIn-page_box .footer {
+  padding: 10px;
+}
+
+.App .signIn-page_box .body p {
+  color: #ffffff;
+  padding: 5px 0 10px 0;
+  font-weight: bold;
+}
+
+.App .signIn-page_box .body p span {
+  color: #bb86fc;
+}
+
+.App .signIn-page_box .body p span span {
+  font-weight: 400;
+}
+
+.App .signIn-page_box .body button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 10px auto;
+  border-radius: 20px;
+  border: none;
+  padding: 10px;
+  color: #868686;
+  font-weight: bold;
+  cursor: pointer;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+  background: #fafafa;
+}
+
+.App .signIn-page_box .body button img {
+  margin-right: 10px;
+  width: 20px;
+}
+
+.App .signIn-page_box .body button:hover {
+  background: #eeeeee;
+}
+
+.App .signIn-page_box .body button:active {
+  -webkit-transform: translateY(5px);
+          transform: translateY(5px);
+}
+
+.App .signIn-page_box .footer {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 10px;
+}
+
+.App .signIn-page_box .footer a {
+  color: #bb86fc;
+  text-decoration: none;
+}
+
+.App .signIn-page_box .body,
+.App .signIn-page_box .footer {
+  text-align: center;
+}
+
+.App .signIn-page_box .header,
+.App .signIn-page_box .footer {
+  background: #222222;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.App .signIn-page_box .header img,
+.App .signIn-page_box .footer img {
+  width: 35px;
+  margin-right: 5px;
+}
+
+.App .ChatRoom {
+  background-color: #ccc;
+  background-position: top;
+  background-size: cover;
+  height: inherit;
+  background-image: url("../img/big_bg/big_purple.png");
+}
+
+.App .ChatRoom nav {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background: #222222;
+}
+
+.App .ChatRoom nav .brandName img {
+  width: 35px;
+  margin-right: 5px;
+}
+
+@-webkit-keyframes drop {
+  from {
+    top: -200px;
+  }
+  to {
+    top: 45%;
+  }
+}
+
+@keyframes drop {
+  from {
+    top: -200px;
+  }
+  to {
+    top: 45%;
+  }
+}
+/*# sourceMappingURL=App.css.map */
