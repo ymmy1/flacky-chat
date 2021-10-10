@@ -1,4 +1,6 @@
 import './styles/App.css';
+import { RiAddBoxFill } from 'react-icons/ri';
+import { FiSend } from 'react-icons/fi';
 
 import { useState, useEffect, useRef } from 'react';
 import firebase from 'firebase/compat/app'; //v9
@@ -6,7 +8,10 @@ import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
 
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useCollectionData } from 'react-firebase-hooks/firestore';
+import {
+  useCollection,
+  useCollectionData,
+} from 'react-firebase-hooks/firestore';
 
 firebase.initializeApp({
   apiKey: 'AIzaSyAJeSoS9EgryOdZOtQJYB4GbS5vpQsmLGs',
@@ -78,14 +83,76 @@ function SignOut() {
   );
 }
 
+function Settings(props) {
+  return (
+    <>
+      <div
+        className={`settings ${props.className}`}
+        onClick={props.toggleSwitch}
+      ></div>
+      <div className={`settings-box settings-box-${props.className}`}>
+        <div className='header'>
+          <img src='/bubbles/theme_purple.png' alt='logo' />
+          <p>
+            Flacky<strong>Chat</strong>
+          </p>
+        </div>
+        <div className='body'>
+          <h1>Select Theme</h1>
+          <div className='theme-selection'>
+            <div
+              id='theme_blue'
+              className={`theme ${
+                props.theme === 'blue' ? 'themeBorder' : 'defaultBorder'
+              }`}
+              onClick={() => props.changeTheme('blue')}
+            ></div>
+            <div
+              id='theme_purple'
+              className={`theme ${
+                props.theme === 'purple' ? 'themeBorder' : 'defaultBorder'
+              }`}
+              onClick={() => props.changeTheme('purple')}
+            ></div>
+            <div
+              id='theme_green'
+              className={`theme ${
+                props.theme === 'green' ? 'themeBorder' : 'defaultBorder'
+              }`}
+              onClick={() => props.changeTheme('green')}
+            ></div>
+          </div>
+          <p>{props.theme}</p>
+        </div>
+        <div className='footer'>
+          <SignOut />
+        </div>
+      </div>
+    </>
+  );
+}
 function ChatRoom() {
   const dummyScroll = useRef();
-  const messagesRef = firestore.collection('messages');
-  const query = messagesRef.orderBy('createdAt').limit(50);
+  let firstName = auth.currentUser.displayName.split(' ')[0];
 
+  const [room, setRoom] = useState('general');
+  const [roomType, setRoomType] = useState('public');
+
+  const messagesRef = firestore.collection(`${roomType}/${room}/messages`);
+  const query = messagesRef.orderBy('createdAt').limit(50);
   const [messages] = useCollectionData(query, { idField: 'id' });
 
+  const roomsRef = firestore.collection('public');
+  const [rooms] = useCollection(roomsRef);
+
   const [formValue, setFormValue] = useState('');
+
+  const [showSettings, setShowSettings] = useState(false);
+  const [theme, setTheme] = useState('purple');
+
+  const changeTheme = (theme) => {
+    setTheme(theme);
+  };
 
   useEffect(() => {
     dummyScroll.current.scrollIntoView({ behavior: 'smooth' });
@@ -93,11 +160,12 @@ function ChatRoom() {
   const sendMessage = async (e) => {
     e.preventDefault();
     if (formValue.length > 0) {
-      const { uid, photoURL } = auth.currentUser;
+      const { uid, displayName, photoURL } = auth.currentUser;
 
       await messagesRef.add({
         text: formValue,
         createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        displayName,
         uid,
         photoURL,
       });
@@ -110,6 +178,21 @@ function ChatRoom() {
 
   return (
     <div className='ChatRoom'>
+      {showSettings ? (
+        <Settings
+          toggleSwitch={() => setShowSettings(!showSettings)}
+          className={'active'}
+          theme={theme}
+          changeTheme={changeTheme}
+        />
+      ) : (
+        <Settings
+          toggleSwitch={() => setShowSettings(!showSettings)}
+          className={'inactive'}
+          theme={theme}
+          changeTheme={changeTheme}
+        />
+      )}
       <nav>
         <div className='brandName'>
           <img src='/bubbles/theme_purple.png' alt='flackyChat' />
@@ -117,41 +200,54 @@ function ChatRoom() {
             Flacky<strong>Chat</strong>
           </span>
         </div>
-        <ul className='navbar-nav'>
-          <li className='nav-item'>
-            <SignOut />
-          </li>
-          <li className='nav-item'>
-            <button
-              data-toggle='modal'
-              data-target='#nicknameModalCenter'
-              id='display_nickname'
-              className='btn'
-            >
-              Register
-            </button>
-          </li>
-        </ul>
+        <button onClick={() => setShowSettings(!showSettings)}>
+          {firstName}
+        </button>
       </nav>
-
-      <div className='ChatRoom_main'>
+      <div className='ChatRoom_Main'>
         <div className='channelArea'>
           <div className='publicChannels'>
             <header>
-              <h3>Public Channels</h3> <a href='/'>+</a>
+              <h3>Public Channels</h3>
+              <RiAddBoxFill />
             </header>
             <form>
               <label htmlFor='newChannel'>#</label>
-              <input name='newChannel' type='text' placeholder='New Channel' />
+              <input
+                name='newChannel'
+                type='text'
+                placeholder='New Channel'
+                autoComplete='off'
+              />
             </form>
-            <div className='list'>
-              <div className='channel'>#general</div>
-              <div className='channel'>#flackychat</div>
-            </div>
+            <ul className='list'>
+              {rooms &&
+                rooms.docs.map((r) => {
+                  if (room === r.id)
+                    return (
+                      <li
+                        key={`${r.id}-active`}
+                        className={`channel room-active`}
+                      >
+                        #{r.id}
+                      </li>
+                    );
+                  return (
+                    <li
+                      key={r.id}
+                      className={`channel`}
+                      onClick={() => setRoom(r.id)}
+                    >
+                      #{r.id}
+                    </li>
+                  );
+                })}
+            </ul>
           </div>
           <div className='privateMessages'>
             <header>
-              <h3>Private Messages</h3> <a href='/'>+</a>
+              <h3>Private Messages</h3>
+              <RiAddBoxFill />
             </header>
             <div className='list'>
               <div className='private'>Admin</div>
@@ -160,17 +256,23 @@ function ChatRoom() {
           </div>
         </div>
         <div className='chatArea'>
-          {messages &&
-            messages.map((msg) => <ChatMessage key={msg.id} message={msg} />)}
+          <div className='roomIndicator'>{room}</div>
+          <div className='messages'>
+            {messages &&
+              messages.map((msg) => <ChatMessage key={msg.id} message={msg} />)}
+          </div>
           <div ref={dummyScroll}></div>
-
           <form onSubmit={sendMessage}>
+            <img src={auth.currentUser.photoURL} alt='profile' />
             <input
               type='text'
               value={formValue}
+              maxLength='150'
               onChange={(e) => setFormValue(e.target.value)}
             />
-            <button type='submit'>🐣</button>
+            <button type='submit'>
+              <FiSend />
+            </button>
           </form>
         </div>
       </div>
@@ -179,14 +281,16 @@ function ChatRoom() {
 }
 
 function ChatMessage(props) {
-  const { text, uid, photoURL } = props.message;
-
+  const { text, uid, displayName, photoURL } = props.message;
   const messageClass = uid === auth.currentUser.uid ? 'sent' : 'received';
-
   return (
-    <div className={`message ${messageClass}`}>
-      <img src={photoURL} alt='avatar' />
-      <p>{text}</p>
+    <div className={`message-box ${messageClass}`}>
+      <div className='header'>
+        <img src={photoURL} alt='avatar' />
+        {/* <p className='name'>{displayName.split(' ')[0]}</p> */}
+        <p className='name'>{displayName}</p>
+      </div>
+      <p className='text'>{text}</p>
     </div>
   );
 }

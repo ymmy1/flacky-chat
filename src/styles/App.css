@@ -19,16 +19,12 @@
   background: #ffffff;
 }
 
-.App {
-  height: 100vh;
-}
-
 .App .signIn-page {
   background: #fcfcfc;
   background-image: url("../img/big_bg/logIn.jpg");
   background-position: top;
   background-size: cover;
-  height: inherit;
+  height: 100vh;
   position: relative;
 }
 
@@ -139,9 +135,9 @@
 
 .App .ChatRoom {
   background-color: #ccc;
-  background-position: top;
+  background-position: center;
   background-size: cover;
-  height: inherit;
+  position: relative;
   background-image: url("../img/big_bg/big_purple.png");
 }
 
@@ -153,12 +149,456 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background: #222222;
+  border: none;
+  padding: 10px;
+}
+
+.App .ChatRoom nav .brandName {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #bb86fc;
+  font-size: 22px;
 }
 
 .App .ChatRoom nav .brandName img {
   width: 35px;
   margin-right: 5px;
+}
+
+.App .ChatRoom nav button {
+  background: #5f00e6;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+  border: 2px solid transparent;
+  outline: none;
+}
+
+.App .ChatRoom nav button:hover {
+  background: rgba(95, 0, 230, 0.8);
+}
+
+.App .ChatRoom nav button:active {
+  -webkit-transform: translateY(2px);
+          transform: translateY(2px);
+}
+
+.App .ChatRoom_Main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: #fff;
+  height: calc(100vh - 61px);
+}
+
+.App .ChatRoom_Main .channelArea {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 30px;
+  width: 300px;
+  font-size: 18px;
+}
+
+.App .ChatRoom_Main .channelArea header {
+  border-bottom: 1px solid #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 18px;
+  padding: 10px 0;
+  margin-bottom: 10px;
+}
+
+.App .ChatRoom_Main .channelArea form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.App .ChatRoom_Main .channelArea form label,
+.App .ChatRoom_Main .channelArea form input {
+  outline: none;
+  color: #fff;
+  font-size: 18px;
+  background: #222222;
+  border: none;
+  padding: 10px;
+}
+
+.App .ChatRoom_Main .channelArea form label:focus,
+.App .ChatRoom_Main .channelArea form input:focus {
+  background: #292929;
+}
+
+.App .ChatRoom_Main .channelArea form input {
+  width: 100%;
+}
+
+.App .ChatRoom_Main .channelArea .list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+}
+
+.App .ChatRoom_Main .channelArea .list .channel,
+.App .ChatRoom_Main .channelArea .list .private {
+  list-style: none;
+  padding: 5px 10px;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.App .ChatRoom_Main .channelArea .list .channel:hover,
+.App .ChatRoom_Main .channelArea .list .private:hover {
+  background: #5f00e6;
+}
+
+.App .ChatRoom_Main .channelArea .list .room-active {
+  background: #5f00e6;
+}
+
+.App .ChatRoom_Main .chatArea {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: relative;
+}
+
+.App .ChatRoom_Main .chatArea .roomIndicator {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  background: #222222;
+  padding: 10px;
+}
+
+.App .ChatRoom_Main .chatArea .messages {
+  padding: 20px;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.App .ChatRoom_Main .chatArea .messages::-webkit-scrollbar {
+  display: none;
+}
+
+.App .ChatRoom_Main .chatArea .messages .received {
+  margin-right: auto;
+  border-top-right-radius: 20px;
+}
+
+.App .ChatRoom_Main .chatArea .messages .received .header {
+  border-top-right-radius: 20px;
+}
+
+.App .ChatRoom_Main .chatArea .messages .received .text {
+  background: #4b4b4c;
+}
+
+.App .ChatRoom_Main .chatArea .messages .sent {
+  margin-left: auto;
+  border-top-left-radius: 20px;
+}
+
+.App .ChatRoom_Main .chatArea .messages .sent .header {
+  border-top-left-radius: 20px;
+}
+
+.App .ChatRoom_Main .chatArea .messages .sent .text {
+  background: #5f00e6;
+}
+
+.App .ChatRoom_Main .chatArea .messages .message-box {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  max-width: 400px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 20px;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  -webkit-box-shadow: 5px 5px 15px 1px #000000;
+          box-shadow: 5px 5px 15px 1px #000000;
+}
+
+.App .ChatRoom_Main .chatArea .messages .message-box .header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 5px 10px;
+  background: #bb86fc;
+  border: 1px solid #5f00e6;
+}
+
+.App .ChatRoom_Main .chatArea .messages .message-box .header img {
+  width: 25px;
+  border-radius: 50%;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.App .ChatRoom_Main .chatArea .messages .message-box .header img:hover {
+  -webkit-transform: scale(3);
+          transform: scale(3);
+}
+
+.App .ChatRoom_Main .chatArea .messages .message-box .header .name {
+  font-weight: bold;
+  font-size: 13px;
+  padding: 0 5px;
+}
+
+.App .ChatRoom_Main .chatArea .messages .message-box .text {
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  padding: 8px 15px;
+}
+
+.App .ChatRoom_Main .chatArea form {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0 20px 20px;
+}
+
+.App .ChatRoom_Main .chatArea form img {
+  width: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.App .ChatRoom_Main .chatArea form input {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: 5px 15px;
+  outline: none;
+  font-size: 20px;
+  border-radius: 20px;
+  width: 100%;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+
+.App .ChatRoom_Main .chatArea form button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: white;
+  padding: 5px;
+  outline: none;
+}
+
+.App .ChatRoom .settings {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  display: block;
+  z-index: 10;
+}
+
+.App .ChatRoom .settings-box {
+  position: absolute;
+  z-index: 11;
+  top: 40px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  background: #292929;
+  width: 90%;
+  max-width: 500px;
+  color: #bb86fc;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.App .ChatRoom .settings-box .header,
+.App .ChatRoom .settings-box .body,
+.App .ChatRoom .settings-box .footer {
+  padding: 10px;
+}
+
+.App .ChatRoom .settings-box .header,
+.App .ChatRoom .settings-box .footer {
+  background: #222222;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.App .ChatRoom .settings-box .header img,
+.App .ChatRoom .settings-box .footer img {
+  width: 35px;
+  margin-right: 5px;
+}
+
+.App .ChatRoom .settings-box .footer button {
+  background: #bb86fc;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  -webkit-transition: width 0.1s, background 0.1s, border 0.1s, -webkit-transform 0.1s;
+  transition: width 0.1s, background 0.1s, border 0.1s, -webkit-transform 0.1s;
+  transition: width 0.1s, background 0.1s, border 0.1s, transform 0.1s;
+  transition: width 0.1s, background 0.1s, border 0.1s, transform 0.1s, -webkit-transform 0.1s;
+  margin: auto;
+  border: 2px solid transparent;
+  outline: none;
+}
+
+.App .ChatRoom .settings-box .footer button:hover {
+  background: rgba(187, 134, 252, 0.8);
+}
+
+.App .ChatRoom .settings-box .footer button:active {
+  -webkit-transform: translateY(2px);
+          transform: translateY(2px);
+}
+
+.App .ChatRoom .settings-box .body {
+  text-align: center;
+  color: #fff;
+}
+
+.App .ChatRoom .settings-box .body h1 {
+  font-size: 20px;
+  padding-bottom: 20px;
+}
+
+.App .ChatRoom .settings-box .body .theme-selection {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.App .ChatRoom .settings-box .body .theme-selection .themeBorder {
+  border: 4px solid azure;
+}
+
+.App .ChatRoom .settings-box .body .theme-selection .defaultBorder {
+  border: 4px solid #222222;
+}
+
+.App .ChatRoom .settings-box .body .theme-selection .theme {
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
+  margin: 0 10px;
+}
+
+.App .ChatRoom .settings-box .body .theme-selection #theme_blue {
+  background: -webkit-gradient(linear, left top, right bottom, from(#222222), to(#1970ad));
+  background: linear-gradient(to bottom right, #222222 0%, #1970ad 100%);
+}
+
+.App .ChatRoom .settings-box .body .theme-selection #theme_purple {
+  background: -webkit-gradient(linear, left top, right bottom, from(#222222), to(#5f00e6));
+  background: linear-gradient(to bottom right, #222222 0%, #5f00e6 100%);
+}
+
+.App .ChatRoom .settings-box .body .theme-selection #theme_green {
+  background: -webkit-gradient(linear, left top, right bottom, from(#222222), to(#7d8e64));
+  background: linear-gradient(to bottom right, #222222 0%, #7d8e64 100%);
+}
+
+.App .ChatRoom .active {
+  -webkit-animation-name: openSetting;
+          animation-name: openSetting;
+  -webkit-animation-duration: 0.3s;
+          animation-duration: 0.3s;
+  visibility: visible;
+}
+
+.App .ChatRoom .settings-box-active {
+  -webkit-animation-name: openBoxSetting;
+          animation-name: openBoxSetting;
+  -webkit-animation-duration: 0.3s;
+          animation-duration: 0.3s;
+  top: 40px;
+  visibility: visible;
+}
+
+.App .ChatRoom .inactive {
+  -webkit-animation-name: hideSetting;
+          animation-name: hideSetting;
+  -webkit-animation-duration: 0.3s;
+          animation-duration: 0.3s;
+  visibility: hidden;
+}
+
+.App .ChatRoom .settings-box-inactive {
+  -webkit-animation-name: hideBoxSetting;
+          animation-name: hideBoxSetting;
+  -webkit-animation-duration: 0.3s;
+          animation-duration: 0.3s;
+  top: -160px;
+  visibility: hidden;
 }
 
 @-webkit-keyframes drop {
@@ -176,6 +616,102 @@
   }
   to {
     top: 45%;
+  }
+}
+
+@-webkit-keyframes openSetting {
+  from {
+    opacity: 0;
+    visibility: hidden;
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@keyframes openSetting {
+  from {
+    opacity: 0;
+    visibility: hidden;
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@-webkit-keyframes hideSetting {
+  from {
+    opacity: 1;
+    visibility: visible;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes hideSetting {
+  from {
+    opacity: 1;
+    visibility: visible;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@-webkit-keyframes openBoxSetting {
+  from {
+    opacity: 0;
+    top: -160px;
+    visibility: hidden;
+  }
+  to {
+    opacity: 1;
+    top: 40px;
+    visibility: visible;
+  }
+}
+
+@keyframes openBoxSetting {
+  from {
+    opacity: 0;
+    top: -160px;
+    visibility: hidden;
+  }
+  to {
+    opacity: 1;
+    top: 40px;
+    visibility: visible;
+  }
+}
+
+@-webkit-keyframes hideBoxSetting {
+  from {
+    opacity: 1;
+    top: 40px;
+    visibility: visible;
+  }
+  to {
+    opacity: 0;
+    top: -160px;
+    visibility: hidden;
+  }
+}
+
+@keyframes hideBoxSetting {
+  from {
+    opacity: 1;
+    top: 40px;
+    visibility: visible;
+  }
+  to {
+    opacity: 0;
+    top: -160px;
+    visibility: hidden;
   }
 }
 /*# sourceMappingURL=App.css.map */
