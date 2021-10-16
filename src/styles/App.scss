@@ -6,6 +6,16 @@ $purpleLight: #bb86fc;
 $purpleMid: #5f00e6;
 $purpleDark: #3700b3;
 
+$greenLight: #d1d17b;
+$greenMid: #7d8e64;
+$greenDark: #304637;
+
+$blueLight: #2692e1;
+$blueMid: #1970ad;
+$blueDark: #102945;
+
+$changeThemeTransition: 0.5s;
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -122,10 +132,7 @@ $purpleDark: #3700b3;
     -webkit-background-size: cover;
     background-size: cover;
     position: relative;
-    // overflow: hidden;
-
-    // to copy and change
-    background-image: url('../img/big_bg/big_purple.png');
+    transition: $changeThemeTransition;
 
     nav {
       width: 100%;
@@ -135,18 +142,19 @@ $purpleDark: #3700b3;
       background: $header;
       border: none;
       padding: 10px;
+
       .brandName {
         display: flex;
         align-items: center;
-        color: $purpleLight;
         font-size: 22px;
+        transition: $changeThemeTransition;
         img {
           width: 35px;
           margin-right: 5px;
+          transition: $changeThemeTransition;
         }
       }
       button {
-        background: $purpleMid;
         border: none;
         color: #fff;
         padding: 10px 20px;
@@ -155,10 +163,8 @@ $purpleDark: #3700b3;
         cursor: pointer;
         transition: 0.1s;
         border: 2px solid transparent;
+        transition: $changeThemeTransition;
         outline: none;
-        &:hover {
-          background: rgba($purpleMid, 0.8);
-        }
         &:active {
           transform: translateY(2px);
         }
@@ -169,54 +175,95 @@ $purpleDark: #3700b3;
       color: #fff;
       height: calc(100vh - 61px);
       .channelArea {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         background: rgba(0, 0, 0, 0.5);
         padding: 30px;
         width: 300px;
         font-size: 18px;
-        header {
-          border-bottom: 1px solid #fff;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          font-size: 18px;
-          padding: 10px 0;
-          margin-bottom: 10px;
-        }
-        form {
-          display: flex;
-          width: 100%;
-          label,
-          input {
-            outline: none;
-            color: #fff;
+        overflow-y: scroll;
+        .rooms {
+          header {
+            border-bottom: 1px solid #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             font-size: 18px;
-            background: $header;
-            border: none;
-            padding: 10px;
-            &:focus {
-              background: $body;
+            padding: 10px 0;
+            margin-bottom: 10px;
+            h3 {
+              margin-right: 10px;
+            }
+            svg {
+              cursor: pointer;
+              transition: 0.2s;
+              &:active {
+                transform: translateY(5px);
+              }
             }
           }
-          input {
+          form {
+            display: flex;
+            flex-direction: column;
             width: 100%;
+            header {
+              button {
+                background: none;
+                border: none;
+                color: white;
+                font-size: 18px;
+                padding: 0;
+                height: 18px;
+              }
+            }
+            .body {
+              display: flex;
+              label,
+              input {
+                outline: none;
+                color: #fff;
+                font-size: 18px;
+                background: $header;
+                border: none;
+                padding: 10px;
+                &:focus {
+                  background: $body;
+                }
+              }
+              input {
+                width: 100%;
+              }
+            }
+          }
+          .list {
+            display: flex;
+            flex-direction: column;
+            // justify-content: start;
+            max-height: 250px;
+
+            overflow-y: scroll;
+            .channel,
+            .private {
+              list-style: none;
+              padding: 5px 10px;
+              transition: 0.2s;
+              cursor: pointer;
+              transition: $changeThemeTransition;
+            }
           }
         }
-        .list {
-          display: flex;
-          flex-direction: column-reverse;
-          .channel,
-          .private {
-            list-style: none;
-            padding: 5px 10px;
-            transition: 0.2s;
-            cursor: pointer;
-            &:hover {
-              background: $purpleMid;
-            }
-          }
-          .room-active {
-            background: $purpleMid;
-          }
+        .room-console {
+          margin-top: 20px;
+          min-height: 80px;
+          max-height: 100px;
+          text-align: center;
+          font-weight: bold;
+          font-style: italic;
+          font-size: 10px;
+          box-shadow: 5px 5px 15px 1px #000000;
+          overflow-y: scroll;
+          width: 90%;
         }
       }
       .chatArea {
@@ -225,12 +272,14 @@ $purpleDark: #3700b3;
         flex-direction: column;
         justify-content: space-between;
         position: relative;
+        padding-bottom: 80px;
+
         .roomIndicator {
           position: absolute;
           top: 0;
           left: 50%;
           transform: translateX(-50%);
-          background: $header;
+          background: $body;
           padding: 10px;
         }
         .messages {
@@ -238,6 +287,7 @@ $purpleDark: #3700b3;
           overflow-y: scroll;
           -ms-overflow-style: none; /* IE and Edge */
           scrollbar-width: none; /* Firefox */
+
           &::-webkit-scrollbar {
             display: none;
           }
@@ -258,7 +308,7 @@ $purpleDark: #3700b3;
               border-top-left-radius: 20px;
             }
             .text {
-              background: $purpleMid;
+              transition: $changeThemeTransition;
             }
           }
           .message-box {
@@ -271,13 +321,11 @@ $purpleDark: #3700b3;
             border-bottom-right-radius: 20px;
             border-bottom-left-radius: 20px;
             box-shadow: 5px 5px 15px 1px #000000;
-            // overflow: hidden;
             .header {
               display: flex;
               align-items: center;
               padding: 5px 10px;
-              background: $purpleLight;
-              border: 1px solid $purpleMid;
+              transition: $changeThemeTransition;
               img {
                 width: 25px;
                 border-radius: 50%;
@@ -302,34 +350,54 @@ $purpleDark: #3700b3;
           }
         }
         form {
+          position: absolute;
+          bottom: 0;
           width: 100%;
           display: flex;
-          padding: 0 20px 20px;
-
+          padding: 20px;
+          background: rgba(#000, 0.2);
+          box-shadow: 0px -17px 21px -12px rgba(0, 0, 0, 0.8);
           img {
             width: 40px;
             border-radius: 50%;
             margin-right: 10px;
+            box-shadow: 5px 5px 15px 1px #000000;
           }
 
           input {
             flex: 1;
+            // max-width: 100%;
             padding: 5px 15px;
             outline: none;
-            font-size: 20px;
+            font-size: 15px;
             border-radius: 20px;
             width: 100%;
-            width: max-content;
+            // width: max-content;
+            border: none;
+            box-shadow: 5px 5px 15px 1px #000000;
           }
           button {
+            min-width: 40px;
+            min-height: 40px;
             display: flex;
             align-items: center;
+            justify-content: center;
             background: none;
             border: none;
             font-size: 20px;
             color: white;
-            padding: 5px;
             outline: none;
+            width: 40px;
+            height: 40px;
+            margin-left: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: $changeThemeTransition;
+            box-shadow: 5px 5px 15px 1px #000000;
+            svg {
+              margin-top: 3px;
+              margin-right: 3px;
+            }
           }
         }
       }
@@ -351,8 +419,7 @@ $purpleDark: #3700b3;
       background: $body;
       width: 90%;
       max-width: 500px;
-      color: $purpleLight;
-
+      transition: $changeThemeTransition;
       border-radius: 15px;
       overflow: hidden;
       .header,
@@ -372,7 +439,6 @@ $purpleDark: #3700b3;
       }
       .footer {
         button {
-          background: $purpleLight;
           border: none;
           color: #fff;
           padding: 10px 20px;
@@ -383,9 +449,6 @@ $purpleDark: #3700b3;
           margin: auto;
           border: 2px solid transparent;
           outline: none;
-          &:hover {
-            background: rgba($purpleLight, 0.8);
-          }
           &:active {
             transform: translateY(2px);
           }
@@ -459,6 +522,32 @@ $purpleDark: #3700b3;
       animation-duration: 0.3s;
       top: -160px;
       visibility: hidden;
+    }
+  }
+  @media only screen and (max-width: 666px) {
+    .ChatRoom {
+      &_Main {
+        .channelArea {
+          display: none;
+        }
+        .chatArea {
+          .messages {
+            .message-box {
+              max-width: 90%;
+            }
+            .received {
+              .text {
+                background: rgba($spacegrey, 0.95);
+              }
+            }
+          }
+          form {
+            img {
+              display: none;
+            }
+          }
+        }
+      }
     }
   }
 }

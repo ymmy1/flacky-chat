@@ -1,0 +1,65 @@
+#blueUI {
+  background-image: url("../img/big_bg/big_blue.png");
+}
+
+#blueUI nav .brandName {
+  color: #2692e1;
+}
+
+#blueUI nav button {
+  background: #1970ad;
+}
+
+#blueUI nav button:hover {
+  background: rgba(25, 112, 173, 0.8);
+}
+
+#blueUI .ChatRoom_Main .channelArea .rooms .list .channel:hover,
+#blueUI .ChatRoom_Main .channelArea .rooms .list .private:hover {
+  background: #1970ad;
+}
+
+#blueUI .ChatRoom_Main .channelArea .rooms .list .room-active {
+  background: #1970ad;
+}
+
+#blueUI .ChatRoom_Main .chatArea .messages .sent .text {
+  background: rgba(25, 112, 173, 0.95);
+}
+
+#blueUI .ChatRoom_Main .chatArea .messages .message-box .header {
+  background: rgba(38, 146, 225, 0.95);
+  border: 1px solid #2692e1;
+}
+
+#blueUI .ChatRoom_Main .chatArea form img {
+  -webkit-box-shadow: 0px 0px 6px 6px #2692e1;
+          box-shadow: 0px 0px 6px 6px #2692e1;
+}
+
+#blueUI .ChatRoom_Main .chatArea form button {
+  background: #2692e1;
+}
+
+#blueUI .ChatRoom_Main .chatArea form button:hover {
+  background: rgba(38, 146, 225, 0.8);
+}
+
+#blueUI .settings-box {
+  color: #2692e1;
+}
+
+#blueUI .settings-box .footer button {
+  background: #2692e1;
+}
+
+#blueUI .settings-box .footer button:hover {
+  background: rgba(38, 146, 225, 0.8);
+}
+
+@media only screen and (max-width: 666px) {
+  #blueUI {
+    background-image: url("../img/mobile/mobile_blue.png");
+  }
+}
+/*# sourceMappingURL=theme_blue.css.map */

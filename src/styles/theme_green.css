@@ -1,0 +1,65 @@
+#greenUI {
+  background-image: url("../img/big_bg/big_green.jpg");
+}
+
+#greenUI nav .brandName {
+  color: #d1d17b;
+}
+
+#greenUI nav button {
+  background: #7d8e64;
+}
+
+#greenUI nav button:hover {
+  background: rgba(125, 142, 100, 0.8);
+}
+
+#greenUI .ChatRoom_Main .channelArea .rooms .list .channel:hover,
+#greenUI .ChatRoom_Main .channelArea .rooms .list .private:hover {
+  background: #7d8e64;
+}
+
+#greenUI .ChatRoom_Main .channelArea .rooms .list .room-active {
+  background: #7d8e64;
+}
+
+#greenUI .ChatRoom_Main .chatArea .messages .sent .text {
+  background: rgba(125, 142, 100, 0.95);
+}
+
+#greenUI .ChatRoom_Main .chatArea .messages .message-box .header {
+  background: rgba(209, 209, 123, 0.95);
+  border: 1px solid #d1d17b;
+}
+
+#greenUI .ChatRoom_Main .chatArea form img {
+  -webkit-box-shadow: 0px 0px 6px 6px #d1d17b;
+          box-shadow: 0px 0px 6px 6px #d1d17b;
+}
+
+#greenUI .ChatRoom_Main .chatArea form button {
+  background: #d1d17b;
+}
+
+#greenUI .ChatRoom_Main .chatArea form button:hover {
+  background: rgba(209, 209, 123, 0.8);
+}
+
+#greenUI .settings-box {
+  color: #d1d17b;
+}
+
+#greenUI .settings-box .footer button {
+  background: #d1d17b;
+}
+
+#greenUI .settings-box .footer button:hover {
+  background: rgba(209, 209, 123, 0.8);
+}
+
+@media only screen and (max-width: 666px) {
+  #greenUI {
+    background-image: url("../img/mobile/mobile_green.jpg");
+  }
+}
+/*# sourceMappingURL=theme_green.css.map */

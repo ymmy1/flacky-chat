@@ -1,0 +1,65 @@
+#purpleUI {
+  background-image: url("../img/big_bg/big_purple.png");
+}
+
+#purpleUI nav .brandName {
+  color: #bb86fc;
+}
+
+#purpleUI nav button {
+  background: #5f00e6;
+}
+
+#purpleUI nav button:hover {
+  background: rgba(95, 0, 230, 0.8);
+}
+
+#purpleUI .ChatRoom_Main .channelArea .rooms .list .channel:hover,
+#purpleUI .ChatRoom_Main .channelArea .rooms .list .private:hover {
+  background: #5f00e6;
+}
+
+#purpleUI .ChatRoom_Main .channelArea .rooms .list .room-active {
+  background: #5f00e6;
+}
+
+#purpleUI .ChatRoom_Main .chatArea .messages .sent .text {
+  background: rgba(95, 0, 230, 0.95);
+}
+
+#purpleUI .ChatRoom_Main .chatArea .messages .message-box .header {
+  background: rgba(187, 134, 252, 0.95);
+  border: 1px solid #bb86fc;
+}
+
+#purpleUI .ChatRoom_Main .chatArea form img {
+  -webkit-box-shadow: 0px 0px 6px 6px #bb86fc;
+          box-shadow: 0px 0px 6px 6px #bb86fc;
+}
+
+#purpleUI .ChatRoom_Main .chatArea form button {
+  background: #bb86fc;
+}
+
+#purpleUI .ChatRoom_Main .chatArea form button:hover {
+  background: rgba(187, 134, 252, 0.8);
+}
+
+#purpleUI .settings-box {
+  color: #bb86fc;
+}
+
+#purpleUI .settings-box .footer button {
+  background: #bb86fc;
+}
+
+#purpleUI .settings-box .footer button:hover {
+  background: rgba(187, 134, 252, 0.8);
+}
+
+@media only screen and (max-width: 666px) {
+  #purpleUI {
+    background-image: url("../img/mobile/mobile_purple.png");
+  }
+}
+/*# sourceMappingURL=theme_purple.css.map */

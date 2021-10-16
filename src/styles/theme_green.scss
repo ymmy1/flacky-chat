@@ -1,0 +1,77 @@
+$colorLight: #d1d17b;
+$colorMid: #7d8e64;
+$colorDark: #304637;
+
+#greenUI {
+  background-image: url('../img/big_bg/big_green.jpg');
+  nav {
+    .brandName {
+      color: $colorLight;
+    }
+    button {
+      background: $colorMid;
+      &:hover {
+        background: rgba($colorMid, 0.8);
+      }
+    }
+  }
+  .ChatRoom_Main {
+    .channelArea {
+      .rooms {
+        .list {
+          .channel,
+          .private {
+            &:hover {
+              background: $colorMid;
+            }
+          }
+          .room-active {
+            background: $colorMid;
+          }
+        }
+      }
+    }
+    .chatArea {
+      .messages {
+        .sent {
+          .text {
+            background: rgba($colorMid, 0.95);
+          }
+        }
+        .message-box {
+          .header {
+            background: rgba($colorLight, 0.95);
+            border: 1px solid $colorLight;
+          }
+        }
+      }
+      form {
+        img {
+          box-shadow: 0px 0px 6px 6px $colorLight;
+        }
+        button {
+          background: $colorLight;
+          &:hover {
+            background: rgba($colorLight, 0.8);
+          }
+        }
+      }
+    }
+  }
+  .settings-box {
+    color: $colorLight;
+    .footer {
+      button {
+        background: $colorLight;
+        &:hover {
+          background: rgba($colorLight, 0.8);
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 666px) {
+  #greenUI {
+    background-image: url('../img/mobile/mobile_green.jpg');
+  }
+}
