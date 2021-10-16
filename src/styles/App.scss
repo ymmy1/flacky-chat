@@ -528,9 +528,9 @@ $changeThemeTransition: 0.5s;
     .ChatRoom {
       &_Main {
         .channelArea {
-          min-width: 240px;
+          // min-width: 240px;
           // margin-left: -100%;
-          // display: none;
+          display: none;
         }
         .chatArea {
           .messages {
