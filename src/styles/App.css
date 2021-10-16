@@ -681,7 +681,7 @@
 
 @media only screen and (max-width: 666px) {
   .App .ChatRoom_Main .channelArea {
-    display: none;
+    min-width: 240px;
   }
   .App .ChatRoom_Main .chatArea .messages .message-box {
     max-width: 90%;

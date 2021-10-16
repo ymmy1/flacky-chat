@@ -145,7 +145,7 @@ function ChatRoom() {
 
   // Room State Switch
   const [room, setRoom] = useState('general');
-  const [roomType, setRoomType] = useState('public');
+  const [roomType] = useState('public');
   const roomsRef = firestore.collection('public');
   const [rooms] = useCollection(roomsRef);
 
