@@ -691,8 +691,8 @@
             transform: translateX(-300px);
   }
   .App .ChatRoom_Main .channelArea {
-    -webkit-transition: 0.1s;
-    transition: 0.1s;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
     position: absolute;
     top: 0;
     left: 0;
@@ -705,8 +705,8 @@
             transform: translateX(300px);
   }
   .App .ChatRoom_Main .chatArea {
-    -webkit-transition: 0.1s;
-    transition: 0.1s;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
   }
   .App .ChatRoom_Main .chatArea .messages .message-box {
     max-width: 90%;

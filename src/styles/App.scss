@@ -535,9 +535,9 @@ $changeThemeTransition: 0.5s;
           transform: translateX(-300px);
         }
         .channelArea {
-          transition: 0.1s;
+          // transition: 0.1s;
           // transition: 0.2s;
-          // transition: 0.5s;
+          transition: 0.5s;
           // transition: 1s;
           position: absolute;
           top: 0;
@@ -550,9 +550,9 @@ $changeThemeTransition: 0.5s;
           transform: translateX(300px);
         }
         .chatArea {
-          transition: 0.1s;
+          // transition: 0.1s;
           // transition: 0.2s;
-          // transition: 0.5s;
+          transition: 0.5s;
           // transition: 1s;
           .messages {
             .message-box {
