@@ -44,6 +44,7 @@ $changeThemeTransition: 0.5s;
     -webkit-background-size: cover;
     background-size: cover;
     height: 100vh;
+    min-height: -webkit-fill-available;
     position: relative;
 
     &_box {
@@ -174,6 +175,7 @@ $changeThemeTransition: 0.5s;
       display: flex;
       color: #fff;
       height: calc(100vh - 61px);
+      min-height: -webkit-fill-available;
       .channelArea {
         display: flex;
         flex-direction: column;
