@@ -684,14 +684,15 @@
 @media only screen and (max-width: 666px) {
   .App .ChatRoom_Main {
     position: relative;
+    overflow: hidden;
   }
   .App .ChatRoom_Main .channelArea-hidden {
     -webkit-transform: translateX(-300px);
             transform: translateX(-300px);
   }
   .App .ChatRoom_Main .channelArea {
-    -webkit-transition: 1s;
-    transition: 1s;
+    -webkit-transition: 0.1s;
+    transition: 0.1s;
     position: absolute;
     top: 0;
     left: 0;
@@ -704,8 +705,8 @@
             transform: translateX(300px);
   }
   .App .ChatRoom_Main .chatArea {
-    -webkit-transition: 1s;
-    transition: 1s;
+    -webkit-transition: 0.1s;
+    transition: 0.1s;
   }
   .App .ChatRoom_Main .chatArea .messages .message-box {
     max-width: 90%;

@@ -530,11 +530,15 @@ $changeThemeTransition: 0.5s;
     .ChatRoom {
       &_Main {
         position: relative;
+        overflow: hidden;
         .channelArea-hidden {
           transform: translateX(-300px);
         }
         .channelArea {
-          transition: 1s;
+          transition: 0.1s;
+          // transition: 0.2s;
+          // transition: 0.5s;
+          // transition: 1s;
           position: absolute;
           top: 0;
           left: 0;
@@ -546,7 +550,10 @@ $changeThemeTransition: 0.5s;
           transform: translateX(300px);
         }
         .chatArea {
-          transition: 1s;
+          transition: 0.1s;
+          // transition: 0.2s;
+          // transition: 0.5s;
+          // transition: 1s;
           .messages {
             .message-box {
               max-width: 90%;

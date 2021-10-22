@@ -216,6 +216,7 @@ function ChatRoom() {
   };
 
   const enterRoom = async (newRoom) => {
+    setIsBarOpen(false);
     setRoom(newRoom);
     const oldRoom = room;
     const { uid, displayName } = auth.currentUser;
