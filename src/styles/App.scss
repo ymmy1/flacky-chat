@@ -529,12 +529,24 @@ $changeThemeTransition: 0.5s;
   @media only screen and (max-width: 666px) {
     .ChatRoom {
       &_Main {
+        position: relative;
+        .channelArea-hidden {
+          transform: translateX(-300px);
+        }
         .channelArea {
-          // min-width: 240px;
-          // margin-left: -100%;
-          display: none;
+          transition: 1s;
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: inherit;
+          min-width: 300px;
+          z-index: 2;
+        }
+        .chatArea-hidden {
+          transform: translateX(300px);
         }
         .chatArea {
+          transition: 1s;
           .messages {
             .message-box {
               max-width: 90%;

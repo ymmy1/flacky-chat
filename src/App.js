@@ -7,6 +7,9 @@ import './styles/theme_blue.css';
 import { RiAddBoxFill } from 'react-icons/ri';
 import { FiSend } from 'react-icons/fi';
 
+import { useSwipeable } from 'react-swipeable';
+import { useMediaQuery } from 'react-responsive';
+
 import { useState, useEffect, useRef } from 'react';
 import firebase from 'firebase/compat/app'; //v9
 import 'firebase/compat/firestore';
@@ -140,6 +143,12 @@ function ChatRoom() {
   // scroll down on new message
   const dummyScroll = useRef();
 
+  // checking if we need to paste the swiping func
+  const isMobile = useMediaQuery({ query: `(max-width: 770px)` });
+  console.log('isMobile');
+  console.log(isMobile);
+  console.log(useMediaQuery);
+
   // name to display
   let firstName = auth.currentUser.displayName.split(' ')[0];
 
@@ -148,6 +157,8 @@ function ChatRoom() {
   const [roomType] = useState('public');
   const roomsRef = firestore.collection('public');
   const [rooms] = useCollection(roomsRef);
+
+  const [isBarOpen, setIsBarOpen] = useState(false);
 
   // get messages from Room Switch
   const messagesRef = firestore.collection(`${roomType}/${room}/messages`);
@@ -161,6 +172,13 @@ function ChatRoom() {
   const [formValue, setFormValue] = useState('');
 
   const [channelValue, setChannelValue] = useState('');
+
+  const handlers = useSwipeable({
+    onSwipedLeft: () => setIsBarOpen(false),
+    onSwipedRight: () => setIsBarOpen(true),
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: true,
+  });
 
   const changeTheme = (theme) => {
     setTheme(theme);
@@ -249,8 +267,10 @@ function ChatRoom() {
           {firstName}
         </button>
       </nav>
-      <div className='ChatRoom_Main'>
-        <div className='channelArea'>
+      <div className='ChatRoom_Main' {...handlers}>
+        <div
+          className={'channelArea ' + (isBarOpen ? '' : 'channelArea-hidden')}
+        >
           <div className='rooms'>
             <div className='publicChannels'>
               <form onSubmit={addChannel}>
@@ -314,7 +334,7 @@ function ChatRoom() {
             <div ref={dummyScroll}></div>
           </div>
         </div>
-        <div className='chatArea'>
+        <div className={'chatArea ' + (isBarOpen ? 'chatArea-hidden' : '')}>
           <div className='roomIndicator'>{room}</div>
           <div className='messages'>
             {messages &&

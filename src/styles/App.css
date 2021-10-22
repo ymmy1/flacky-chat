@@ -682,8 +682,30 @@
 }
 
 @media only screen and (max-width: 666px) {
+  .App .ChatRoom_Main {
+    position: relative;
+  }
+  .App .ChatRoom_Main .channelArea-hidden {
+    -webkit-transform: translateX(-300px);
+            transform: translateX(-300px);
+  }
   .App .ChatRoom_Main .channelArea {
-    display: none;
+    -webkit-transition: 1s;
+    transition: 1s;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: inherit;
+    min-width: 300px;
+    z-index: 2;
+  }
+  .App .ChatRoom_Main .chatArea-hidden {
+    -webkit-transform: translateX(300px);
+            transform: translateX(300px);
+  }
+  .App .ChatRoom_Main .chatArea {
+    -webkit-transition: 1s;
+    transition: 1s;
   }
   .App .ChatRoom_Main .chatArea .messages .message-box {
     max-width: 90%;
