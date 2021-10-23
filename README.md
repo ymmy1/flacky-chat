@@ -6,7 +6,7 @@
 
 ### https://courses.edx.org/courses/course-v1:HarvardX+CS50W+Web/course/
 
-### Edited: React + Firebase personal project
+## (Edited): React + Firebase personal project
 
 ## Use the app on Netlify
 
@@ -25,4 +25,4 @@ https://flacky-chat.netlify.app/
 - Make sure you check one of our themes!
   <img src="https://i.imgur.com/rFgS9fn.png" alt="drawing"/>
 
-### More Themes Coming
+## More Themes Coming!
