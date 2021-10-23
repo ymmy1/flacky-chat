@@ -145,9 +145,6 @@ function ChatRoom() {
 
   // checking if we need to paste the swiping func
   const isMobile = useMediaQuery({ query: `(max-width: 770px)` });
-  console.log('isMobile');
-  console.log(isMobile);
-  console.log(useMediaQuery);
 
   // name to display
   let firstName = auth.currentUser.displayName.split(' ')[0];
@@ -196,8 +193,6 @@ function ChatRoom() {
   }, [messages]);
 
   const sendMessage = async (e) => {
-    console.log('sending');
-    console.log(messagesRef);
     e.preventDefault();
     if (formValue.length > 0) {
       const { uid, displayName, photoURL } = auth.currentUser;
@@ -317,16 +312,6 @@ function ChatRoom() {
                     );
                   })}
               </ul>
-            </div>
-            <div className='privateMessages'>
-              <header>
-                <h3>Private&nbsp;Messages</h3>
-                <RiAddBoxFill />
-              </header>
-              <div className='list'>
-                <div className='private'>Admin</div>
-                <div className='private'>Tester</div>
-              </div>
             </div>
           </div>
           <div className='room-console'>

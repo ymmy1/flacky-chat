@@ -309,7 +309,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  max-height: 250px;
+  max-height: 400px;
   overflow-y: scroll;
 }
 
