@@ -8,7 +8,7 @@
 
 ## (Edited): React + Firebase personal project
 
-## Use the app on Netlify
+### Use the app on Netlify
 
 https://flacky-chat.netlify.app/
 
