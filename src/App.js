@@ -8,7 +8,6 @@ import { RiAddBoxFill } from 'react-icons/ri';
 import { FiSend } from 'react-icons/fi';
 
 import { useSwipeable } from 'react-swipeable';
-import { useMediaQuery } from 'react-responsive';
 
 import { useState, useEffect, useRef } from 'react';
 import firebase from 'firebase/compat/app'; //v9
@@ -142,9 +141,6 @@ function Settings(props) {
 function ChatRoom() {
   // scroll down on new message
   const dummyScroll = useRef();
-
-  // checking if we need to paste the swiping func
-  const isMobile = useMediaQuery({ query: `(max-width: 770px)` });
 
   // name to display
   let firstName = auth.currentUser.displayName.split(' ')[0];
